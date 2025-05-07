@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "vsFLAPpDhwI=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\roshf\\MVC_ImageAnalyser\\CS_MVC.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\roshf\\.nuget\\packages\\metadataextractor\\2.8.1\\metadataextractor.2.8.1.nupkg.sha512",
+    "C:\\Users\\roshf\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.2\\microsoft.netcore.platforms.2.1.2.nupkg.sha512",
+    "C:\\Users\\roshf\\.nuget\\packages\\microsoft.win32.systemevents\\9.0.4\\microsoft.win32.systemevents.9.0.4.nupkg.sha512",
+    "C:\\Users\\roshf\\.nuget\\packages\\system.drawing.common\\9.0.4\\system.drawing.common.9.0.4.nupkg.sha512",
+    "C:\\Users\\roshf\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.2\\system.runtime.compilerservices.unsafe.4.5.2.nupkg.sha512",
+    "C:\\Users\\roshf\\.nuget\\packages\\system.text.encoding.codepages\\4.5.1\\system.text.encoding.codepages.4.5.1.nupkg.sha512",
+    "C:\\Users\\roshf\\.nuget\\packages\\xmpcore\\6.1.10.1\\xmpcore.6.1.10.1.nupkg.sha512"
+  ],
+  "logs": []
+}
