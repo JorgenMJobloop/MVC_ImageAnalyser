@@ -2,6 +2,8 @@ using System.Drawing;
 using MetadataExtractor;
 using MetadataExtractor.Formats.Exif;
 using MetadataExtractor.Formats.Jpeg;
+using Microsoft.VisualBasic;
+
 
 public class ImageAnalyser
 {
@@ -37,13 +39,17 @@ public class ImageAnalyser
         var parseDateTime = DateTime.Parse(dateTime);
         metaData.DateTaken = parseDateTime.ToUniversalTime();
 
-
-        if (GPS != null)
+        var location = GPS?.GetGeoLocation();
+        if (GPS != null && location != null)
         {
-            metaData.GPSLongitude = GPS.GetGeoLocation().Longitude.ToString();
-            metaData.GPSLatitude = GPS.GetGeoLocation().Latitude.ToString();
+            metaData.GPSLatitude = location .Latitude.ToString();
+            metaData.GPSLongitude = location.Longitude.ToString();
         }
-
+        else if (GPS != null && GPS.GetGeoLocation() == null)
+        {
+            metaData.GPSLatitude = "0";
+            metaData.GPSLongitude = "0";
+        }
         return metaData;
     }
 }
