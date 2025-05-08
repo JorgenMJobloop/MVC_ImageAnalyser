@@ -1,3 +1,4 @@
+using System.Drawing.Imaging;
 using System.Drawing;
 using MetadataExtractor;
 using MetadataExtractor.Formats.Exif;
@@ -9,6 +10,7 @@ public class ImageAnalyser
     {
         var fileInfo = new FileInfo(filePath);
         using var image = Image.FromFile(filePath);
+
 
         var metaData = new ImageMetadata
         {
@@ -27,21 +29,19 @@ public class ImageAnalyser
 
         metaData.CameraMake = ifd0?.GetDescription(ExifDirectoryBase.TagMake);
         metaData.CameraModel = ifd0?.GetDescription(ExifDirectoryBase.TagModel);
-        var dateTime = subIfdDirectory?.GetDescription(ExifDirectoryBase.TagDateTime);
+        metaData.DateTaken = ifd0?.GetDescription(ExifDirectoryBase.TagDateTime);
 
-        if (string.IsNullOrWhiteSpace(dateTime))
+
+        var location = GPS?.GetGeoLocation();
+        if (GPS != null && location != null)
         {
-            throw new Exception("An error occured!");
+            metaData.GPSLongitude = location.Latitude.ToString("F6");
+            metaData.GPSLatitude = location.Longitude.ToString("F6");
         }
-
-        var parseDateTime = DateTime.Parse(dateTime);
-        metaData.DateTaken = parseDateTime.ToUniversalTime();
-
-
-        if (GPS != null)
+        else if (GPS != null && GPS.GetGeoLocation() == null)
         {
-            metaData.GPSLongitude = GPS.GetGeoLocation().Longitude.ToString();
-            metaData.GPSLatitude = GPS.GetGeoLocation().Latitude.ToString();
+            metaData.GPSLatitude = "0";
+            metaData.GPSLongitude = "0";
         }
 
         return metaData;

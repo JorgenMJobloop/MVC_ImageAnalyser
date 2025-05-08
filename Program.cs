@@ -10,6 +10,6 @@ class Program
         string? path = Console.ReadLine();
 
         controller.AnalyseAndDisplayImageInformation(path);
-
+        Console.WriteLine($"{path} image uuid: {Guid.NewGuid()}");
     }
 }

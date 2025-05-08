@@ -9,6 +9,9 @@ public class View
         Console.WriteLine($"Format: {metaData.Format}");
 
         Console.WriteLine("\nImage EXIF-metadata:");
-        Console.WriteLine($"");
+        Console.WriteLine($"Camera Make: {metaData.CameraMake}");
+        Console.WriteLine($"Camera Model: {metaData.CameraModel}");
+        Console.WriteLine($"Date taken: {metaData.DateTaken}");
+        Console.WriteLine($"GPS: {metaData.GPSLatitude}, {metaData.GPSLongitude}");
     }
 }
